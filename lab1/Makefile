@@ -3,7 +3,7 @@ CC = gcc
 all: DemoParser.tab.h DemoParser.tab.c lex.yy.c main.c
 	$(CC) -o demo DemoParser.tab.c lex.yy.c main.c 
 
-DemoParser.tab.h DemoParser.tab.c: parser.y
+DemoParser.tab.h DemoParser.tab.c: DemoParser.y
 	$(BISON) -d DemoParser.y
 
 lex.yy.c: DemoParser.tab.h DemoScanner.lex 
