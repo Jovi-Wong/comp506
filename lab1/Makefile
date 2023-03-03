@@ -1,6 +1,6 @@
 CC = gcc
 
-all: DemoParser.tab.h DemoParser.tab.c lex.yy.c main.c
+all: DemoParser.tab.h DemoParser.tab.c lex.yy.c
 	$(CC) -o demo DemoParser.tab.c lex.yy.c main.c 
 
 DemoParser.tab.h DemoParser.tab.c: DemoParser.y
