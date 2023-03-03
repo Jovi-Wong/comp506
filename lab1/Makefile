@@ -1,13 +1,13 @@
 CC = gcc
 
-all: parser.tab.h parser.tab.c lex.yy.c main.c
-	$(CC) -o demo parser.tab.c lex.yy.c main.c 
+all: DemoParser.tab.h DemoParser.tab.c lex.yy.c main.c
+	$(CC) -o demo DemoParser.tab.c lex.yy.c main.c 
 
-parser.tab.h parser.tab.c: parser.y
+DemoParser.tab.h DemoParser.tab.c: parser.y
 	$(BISON) -d DemoParser.y
 
-lex.yy.c: parser.tab.h scanner.lex 
+lex.yy.c: DemoParser.tab.h DemoScanner.lex 
 	$(FLEX) DemoScanner.lex
 
 clean:
-	rm demo parser.tab.h parser.tab.c lex.yy.c
+	rm demo DemoParser.tab.h DemoParser.tab.c lex.yy.c
