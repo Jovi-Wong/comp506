@@ -17,21 +17,30 @@ int yyerror (const char *s) {
 }
 
 int main (int argc, char* argv[]) {
-	if (argc == 2) {
-		if (!strcmp("-h", argv[1])) {
+	if (argc == 2)
+	{
+		if (!strcmp("-h", argv[1]))
+		{
 			printf("-h : help\n");
 			return 0;
-		} else {
-			if((access(argv[1], F_OK)) != -1) {   
+		} 
+		else
+		{
+			if((access(argv[1], F_OK)) != -1)
+			{   
         		FILE *fp;
 				fp = fopen(argv[1], "r");
 				yyin = fp;
-    		} else {
+    		}
+			else
+			{
     			printf("Cannot find file %s.\n", argv[1]);
     			return 0;
    			}		
 		}
-	} else {
+	} 
+	else
+	{
 		yyin = stdin;
 	}
 
