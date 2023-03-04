@@ -16,19 +16,22 @@ In this assignment, I need to implement a scanner and a parser for a programming
 
 ### Parser
 
-The first part of the bison file is to specify all terminals that can be recognized as category in the token. Then, the second part is to write all syntax of the CFG given in the material into this file.
+The first part of the bison file is to specify all terminals that can be recognized as category in the token. Then, the second part is to write all syntax of the CFG given in the material into this file. The parser file ends up with *.y* as suffix.
 
 
 
 ### Scanner
 
+The file specifying the scanner is also very simple. All we need to do is to define all words that should be converted to terminal symbols and corresponding operations. The scanner file ends up with *.l*  as suffix.
+
 
 
 ### Entry
+
+When we run command in the terminal to compiler program written in the Demo language, we need a C program to deal with the command and flags. Besides, it will print something to tell us whether programs have been compiled successfully.
 
 
 
 ## Test
 
-I have run all tests 
-
+I have run all given tests. And outputs returned meet expectation.
