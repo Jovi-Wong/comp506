@@ -1,0 +1,34 @@
+# Lab1 Description
+
+**Name:** Jiawei Wang
+
+**NetID:** jw160 
+
+
+
+## Introduction
+
+In this assignment, I need to implement a scanner and a parser for a programming language called Demo. For each part, I utilize different tools to build it. To be specific, I generate the parser using bison. It will produce two C program file if I provide the context-free grammar. Then I import these files into the scanner generator. At last, I write a C program with main function to read the command line input.
+
+
+
+## Approach
+
+### Parser
+
+The first part of the bison file is to specify all terminals that can be recognized as category in the token. Then, the second part is to write all syntax of the CFG given in the material into this file.
+
+
+
+### Scanner
+
+
+
+### Entry
+
+
+
+## Test
+
+I have run all tests 
+

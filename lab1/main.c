@@ -1,7 +1,8 @@
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
 #include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+
 
 FILE* yyin;
 int yylineno; 
@@ -13,43 +14,33 @@ int yywrap(void) {
 
 int yyerror (const char *s) {	
 	errorCount += 1;
-	fprintf(stderr, "Line %d: %s\n", yylineno, s);
+	printf("Error! At line %d: %s\n", yylineno, s);
 }
 
 int main (int argc, char* argv[]) {
-	// if (argc == 2)
-	// {
-	// 	if (!strcmp("-h", argv[1]))
-	// 	{
-	// 		printf("-h : help\n");
-	// 		return 0;
-	// 	} 
-	// 	else
-	// 	{
-	// 		if((access(argv[1], F_OK)) != -1)
-	// 		{   
-    //     		FILE *fp;
-	// 			fp = fopen(argv[1], "r");
-	// 			yyin = fp;
-    // 		}
-	// 		else
-	// 		{
-    // 			printf("Cannot find file %s.\n", argv[1]);
-    // 			return 0;
-   	// 		}		
-	// 	}
-	// } 
-	// else
-	// {
-	// 	yyin = stdin;
-	// }
+	if (argc == 2)
+	{
+		if((access(argv[1], F_OK)) != -1)
+		{
+			yyin = fopen(argv[1], "r");
+		}
+		else
+		{
+			printf("File named %s doesn't exist!\n", argv[1]);
+			return 0;
+		}
+	} 
+	else
+	{
+		yyin = stdin;
+	}
 
 	yyparse();
 
-	// if (errorCount == 0) {
-	// 	printf("Parse Successfully.\n");
-	// } else {
-	// 	printf("Parser fails. Total number of errors: %d.\n", errorCount);
-	// }
+	if (errorCount == 0) {
+		printf("Parse succeeds.\n");
+	} else {
+		printf("Parse fails. Total number of errors: %d.\n", errorCount);
+	}
 	return 0;
 }
