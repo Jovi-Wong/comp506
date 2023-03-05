@@ -1,0 +1,7 @@
+procedure add {
+  int x, z;
+  char y;
+  x = 7;
+  z = 'e';
+  write z; 
+}

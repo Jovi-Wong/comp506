@@ -1,0 +1,8 @@
+procedure add {
+  int x;
+  x = 7;
+  y = 8;
+  z = 9;
+  z = x + y + z;
+  write z;
+}
