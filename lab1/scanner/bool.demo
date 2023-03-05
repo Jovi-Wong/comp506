@@ -1,56 +1,56 @@
 procedure main {
- int one, zero, temp;
- 
- one  = 1;
- zero = 0;
+    int one, zero, temp;
 
- if (zero or zero) then
-     write one;
- else 
-     write zero;
+    one  = 1;
+    zero = 0;
 
- if (one or zero) then
-     write one;
- else 
-     write zero;
+    if (zero or zero) then
+        write one;
+    else 
+        write zero;
 
- if (zero or one) then
-     write one;
- else 
-     write zero;
+    if (one or zero) then
+        write one;
+    else 
+        write zero;
 
- if (one or one) then
-     write one;
- else 
-     write zero;
+    if (zero or one) then
+        write one;
+    else 
+        write zero;
 
- if (zero and zero) then
-     write one;
- else 
-     write zero;
+    if (one or one) then
+        write one;
+    else 
+        write zero;
 
- if (one and zero) then
-     write one;
- else 
-     write zero;
+    if (zero and zero) then
+        write one;
+    else 
+        write zero;
 
- if (zero and one) then
-     write one;
- else 
-     write zero;
+    if (one and zero) then
+        write one;
+    else 
+        write zero;
 
- if (one and one) then
-     write one;
- else 
-     write zero;
+    if (zero and one) then
+        write one;
+    else 
+        write zero;
 
- if (not zero) then
-     write one;
- else 
-     write zero;
+    if (one and one) then
+        write one;
+    else 
+        write zero;
 
- if (not one) then
-     write zero;
- else 
-     write one;
+    if (not zero) then
+        write one;
+    else 
+        write zero;
+
+    if (not one) then
+        write zero;
+    else 
+        write one;
 }

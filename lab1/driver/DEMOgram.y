@@ -164,4 +164,3 @@ void yyerror(const char* s)
 	errorCount += 1;
 	printf("Error! At line %d: %s\n", yylineno, s);
 }
-

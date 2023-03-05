@@ -71,5 +71,3 @@ int CTRL_M = 0;
 [ \t]*               {}
 [\n]                 {yylineno++;}
 %%
-
-/* user code */
