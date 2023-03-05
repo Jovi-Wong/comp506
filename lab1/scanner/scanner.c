@@ -2057,7 +2057,7 @@ int main (int argc, char *argv[])
     char rest[input_len];
     strcpy(rest, inputS);
     rest[input_len-1] = '\0';
-
+	printf("**************************************");
     while(rest)
     {
 		yy_scan_string(rest);
