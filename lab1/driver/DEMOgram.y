@@ -79,10 +79,10 @@ Stmt: Reference '=' Expr ';'
 	| IF '(' Bool ')' THEN Stmt ELSE Stmt 
 	| READ Reference ';' 
 	| WRITE Expr ';'
-	| '(' ')' {yyerror("Error! No statement in ()");}
-	| '[' ']' {yyerror("Error! No statement in []");}
-	| '{' '}' {yyerror("Error! No statement in {}");}
-	| ';' 	  {yyerror("Error! Unexpected semicolon"); yyclearin;};
+	| '(' ')' {yyerror("Error! No statement in ()"); syntax_error += 1;}
+	| '[' ']' {yyerror("Error! No statement in []"); syntax_error += 1;}
+	| '{' '}' {yyerror("Error! No statement in {}"); syntax_error += 1;}
+	| ';' 	  {yyerror("Error! Unexpected semicolon"); syntax_error += 1;};
 	
 
 Bool: NOT OrTerm 
