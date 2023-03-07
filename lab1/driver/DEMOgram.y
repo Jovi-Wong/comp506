@@ -47,78 +47,52 @@ void yyerror( char const *);
 
 %%
  /* Grammar rules  */
-Procedure: PROCEDURE NAME
-			'{' Decls Stmts '}'
-			;
+Procedure: PROCEDURE NAME '{' Decls Stmts '}';
 
 Decls: Decls Decl ';' 
-	 | Decl ';' 
-	 ;
+	 | Decl ';';
 
-Decl: Type SpecList
-	;
+Decl: Type SpecList;
 
 Type: INT
-	| CHAR
-	;
+	| CHAR;
 
 SpecList: SpecList ',' Spec
-		| Spec 
-		;
+		| Spec;
 
 Spec: NAME 
-	| NAME '[' Bounds ']' 
-	;
+	| NAME '[' Bounds ']';
 
 Bounds: Bounds ',' Bound 
-      | Bound 
-      ;
+      | Bound;
 
-Bound: NUMBER ':' NUMBER 
-	 ;
+Bound: NUMBER ':' NUMBER;
 
 Stmts: Stmts Stmt 
-	 | Stmt 
-	 ;
+	 | Stmt;
 
-Stmt: Reference '=' Expr ';' 
-	| ';' { yyerror("Unexpected semicolon ';', indicates an empty statement"); yyclearin; }
+Stmt: Reference '=' Expr ';'
     | '{' Stmts '}' 
 	| WHILE '(' Bool ')' '{' Stmts '}' 
-    | FOR NAME '=' Expr TO
-	    Expr BY Expr '{' Stmts '}' 
+    | FOR NAME '=' Expr TO Expr BY Expr '{' Stmts '}' 
     | IF '(' Bool ')' THEN Stmt 
 	| IF '(' Bool ')' THEN WithElse ELSE Stmt 
 	| READ Reference ';' 
-	| WRITE Expr ';' 
-	| '{' '}' { yyerror("Empty statement list"); }
-	| error ';' { yyclearin; yyerrok; } 
-	; 	
-
-WithElse: IF '(' Bool ')' THEN WithElse ELSE WithElse
-		| ';' { yyerror("Unexpected semicolon ';', indicates an empty statement"); yyclearin; }
- 		| Reference '=' Expr ';' 
-     	| '{' Stmts '}' 
-	  	| WHILE '(' Bool ')' '{' Stmts '}' 
-     	| FOR NAME '=' Expr TO 
-     		Expr BY Expr '{' Stmts '}' 
-		| READ Reference ';' 
-		| WRITE Expr ';'
-		| '{' '}' { yyerror("Empty statement list"); }
-		| error ';' { yyclearin; yyerrok; } 
-		;
+	| WRITE Expr ';'
+	| '(' ')' {yyerror("Error! No statement in ()");}
+	| '[' ']' {yyerror("Error! No statement in []")}
+	| '{' '}' {yyerror("Error! No statement in {}");}
+	| ';' 	  {yyerror("Error! Unexpected semicolon"); yyclearin;};
+	
 
 Bool: NOT OrTerm 
-	| OrTerm 
-	;
+	| OrTerm;
 
 OrTerm: OrTerm OR AndTerm 
-	  | AndTerm 
-	  ;
+	  | AndTerm;
 
 AndTerm: AndTerm AND RelExpr 
-	   | RelExpr 
-	   ;		
+	   | RelExpr;		
 
 RelExpr: RelExpr LT Expr 
 	   | RelExpr LE Expr 
@@ -126,35 +100,28 @@ RelExpr: RelExpr LT Expr
 	   | RelExpr NE Expr 
 	   | RelExpr GE Expr 
 	   | RelExpr GT Expr 
-	   | Expr
-	   ;
+	   | Expr;
 
 Expr: Expr '+' Term 
 	| Expr '-' Term
-	| Term 
-	;
+	| Term;
 
 Term: Term '*' Factor 
 	| Term '/' Factor 
-	| Factor 
-	;
+	| Factor;
 
 Factor: '(' Expr ')' 
 	  | Reference 
 	  | NUMBER 
-	  | CHARCONST 
-	  ; 
+	  | CHARCONST;
 
 Reference: NAME 
-	     | NAME '[' Exprs ']'
-	     ;
+	     | NAME '[' Exprs ']';
 
 Exprs: Expr ',' Exprs 
-	 | Expr
-	 ;
+	 | Expr;
 
 %%
-
 
 /* Epilogue */
 
