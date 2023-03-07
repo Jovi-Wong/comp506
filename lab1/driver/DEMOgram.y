@@ -15,7 +15,6 @@
 
 int yylineno;
 char *yytext;
-extern size_t syntax_count;
 void yyerror( char const *);
 
 %}
