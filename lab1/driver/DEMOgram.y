@@ -80,7 +80,7 @@ Stmt: Reference '=' Expr ';'
 	| READ Reference ';' 
 	| WRITE Expr ';'
 	| '(' ')' {yyerror("Error! No statement in ()");}
-	| '[' ']' {yyerror("Error! No statement in []")}
+	| '[' ']' {yyerror("Error! No statement in []");}
 	| '{' '}' {yyerror("Error! No statement in {}");}
 	| ';' 	  {yyerror("Error! Unexpected semicolon"); yyclearin;};
 	
