@@ -80,10 +80,10 @@ Stmt: Reference '=' Expr ';'
 	| IF '(' Bool ')' THEN Stmt ELSE Stmt 
 	| READ Reference ';' 
 	| WRITE Expr ';'
-	| '(' ')' {yyerror("Error! No statement in ()"); err_cnt += 1;}
-	| '[' ']' {yyerror("Error! No statement in []"); err_cnt += 1;}
-	| '{' '}' {yyerror("Error! No statement in {}"); err_cnt += 1;}
-	| ';' 	  {yyerror("Error! Unexpected semicolon"); err_cnt += 1; yyclearin;};
+	| '(' ')' {yyerror("Error! No statement in ()"); syntax_count += 1;}
+	| '[' ']' {yyerror("Error! No statement in []"); syntax_count += 1;}
+	| '{' '}' {yyerror("Error! No statement in {}"); syntax_count += 1;}
+	| ';' 	  {yyerror("Error! Unexpected semicolon"); syntax_count += 1; yyclearin;};
 	
 
 Bool: NOT OrTerm 
@@ -129,6 +129,6 @@ Exprs: Expr ',' Exprs
 
 void yyerror(const char* s)
 {
-	err_cnt += 1;
+	syntax_count += 1;
 	printf("Error! At line %d: %s\n", yylineno, s);
 }
