@@ -76,7 +76,7 @@ Stmt: Reference '=' Expr ';'
 	| WHILE '(' Bool ')' '{' Stmts '}' 
     | FOR NAME '=' Expr TO Expr BY Expr '{' Stmts '}' 
     | IF '(' Bool ')' THEN Stmt 
-	| IF '(' Bool ')' THEN WithElse ELSE Stmt 
+	| IF '(' Bool ')' THEN Stmt ELSE Stmt 
 	| READ Reference ';' 
 	| WRITE Expr ';'
 	| '(' ')' {yyerror("Error! No statement in ()");}
