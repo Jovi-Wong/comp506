@@ -15,6 +15,7 @@
 
 int yylineno;
 char *yytext;
+size_t err_cnt;
 void yyerror( char const *);
 
 %}
@@ -125,7 +126,7 @@ Exprs: Expr ',' Exprs
 
 /* Epilogue */
 
-size_t err_cnt = 0;
+
 void yyerror(const char* s)
 {
 	err_cnt += 1;
